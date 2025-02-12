@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "ts_ls", "gopls" },
+        ensure_installed = { "lua_ls", "ts_ls", "eslint", "cssls", "html", "jsonls", "gopls" },
       })
     end,
   },
@@ -17,17 +17,14 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-      })
+      local servers = { "lua_ls", "ts_ls", "eslint", "cssls", "html", "jsonls", "gopls" }
+
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup({
+          capabilities = capabilities,
+        })
+      end
 
       -- Disable diagnostic signs
       vim.diagnostic.config({

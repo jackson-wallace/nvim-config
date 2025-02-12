@@ -26,3 +26,7 @@ vim.keymap.set("v", "<leader>y", '"+y')
 
 -- Paste from system clipboard
 vim.keymap.set("n", "<leader>p", '"+p')
+
+vim.opt.hlsearch = true
+vim.opt.scrolloff = 10
+vim.opt.ignorecase = true
