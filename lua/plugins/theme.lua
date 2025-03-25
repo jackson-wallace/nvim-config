@@ -1,8 +1,9 @@
 return {
-  "AlexvZyl/nordic.nvim",
-  lazy = false,
-  priority = 1000,
+  "vague2k/vague.nvim",
   config = function()
-    require("nordic").load()
+    require("vague").setup({
+      transparent = true,
+    })
+    vim.cmd.colorscheme("vague")
   end,
 }
